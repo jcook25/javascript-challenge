@@ -4,13 +4,13 @@ const tableData = data;
 // YOUR CODE HERE!
 const tbody = d3.select("tbody");
 
-function GenerateTable(data) {
+function GenerateTable(input) {
 
     tbody.html("")
 
-    data.forEach((data) => {
+    input.forEach((item) => {
         var row = tbody.append("tr");
-        Object.entries(data).forEach(([key, value]) => {
+        Object.entries(item).forEach(([key, value]) => {
             var cell = row.append("td").text(value)
         });
 
@@ -27,10 +27,12 @@ function handleClick() {
         filteredData = filteredData.filter(row => inputvalue === row.datetime)
     }
 
+    GenerateTable(filteredData);
 };
 
 d3.selectAll("#filter-btn").on("click", handleClick);
 
 GenerateTable(tableData);
+
 
  
